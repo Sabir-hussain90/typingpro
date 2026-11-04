@@ -12,9 +12,10 @@ export class UsersController {
     return this.usersService.getProfile(req.user.userId);
   }
 
-  // 👇 Returns ALL history from ALL users
+  // 👇 This tries to get the user's history by their ID
   @Get('history')
-  getHistory() {
-    return this.usersService.getAllRecentHistory();
+  @UseGuards(JwtAuthGuard)
+  getHistory(@Req() req: any) {
+    return this.usersService.getTypingHistory(req.user.userId);
   }
-} 
+}

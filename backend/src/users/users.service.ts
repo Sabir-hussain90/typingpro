@@ -16,17 +16,7 @@ export class UsersService {
 
   async getTypingHistory(userId: string) {
     return this.prisma.typingResult.findMany({
-      where: { userId },
-      orderBy: { createdAt: 'desc' },
-      include: { 
-        paragraph: { select: { title: true } },
-        user: { select: { email: true } }
-      },
-    });
-  }
-
-  async getAllRecentHistory() {
-    return this.prisma.typingResult.findMany({
+      where: { userId: userId },
       orderBy: { createdAt: 'desc' },
       include: { 
         paragraph: { select: { title: true } },

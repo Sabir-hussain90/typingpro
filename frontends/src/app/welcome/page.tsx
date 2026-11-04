@@ -3,14 +3,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function WelcomePage() {
-  const [name, setName] = useState("Sabir Hussain");
+  // 👇 Empty string so the box is blank when the user arrives
+  const [name, setName] = useState("");
   const router = useRouter();
 
   const handleEnter = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    // Save the name to localStorage
+    // Save the name the user typed to localStorage
     localStorage.setItem("userName", name.trim());
 
     router.push("/typing");
@@ -41,18 +42,19 @@ export default function WelcomePage() {
               
               <input
                 type="text"
-                className="w-[90%] p-2 border-2 border-[#5b9bd5] bg-white text-black text-[18px] font-semibold outline-none mb-1 box-border"
+                className="w-[90%] p-2 border-2 border-[#5b9bd5] bg-white text-black text-[18px] font-semibold outline-none mb-1 box-border placeholder-gray-400 placeholder:font-normal"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Type your name here..."
+                placeholder="Enter your name" // 👈 Placeholder here
                 required
               />
               
               <div className="w-[90%] h-[150px] border-2 border-[#5b9bd5] bg-white overflow-y-auto mb-[15px] box-border">
-                <div className="p-2 text-[18px] text-black border-b border-gray-100">{name || "Type your name above..."}</div>
+                {/* 👇 Shows the placeholder if nothing is typed yet */}
+                <div className="p-2 text-[18px] text-black border-b border-gray-100">
+                  {name || <span className="text-gray-400">Enter your name</span>}
+                </div>
               </div>
-
-              {/* 👇 Button completely removed from here */}
 
               <div className="mt-auto flex justify-end w-[90%] pt-5">
                 <button type="submit" className="bg-gradient-to-b from-white to-[#dce6f2] border-2 border-[#8c9bb3] rounded-[5px] py-2 px-10 text-[18px] font-bold text-black cursor-pointer shadow-sm hover:from-gray-100">

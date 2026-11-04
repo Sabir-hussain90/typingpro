@@ -11,8 +11,6 @@ api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token');
-      // 👇 DEBUG LOG
-      console.log("Token being sent:", token ? "YES" : "NO");
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
