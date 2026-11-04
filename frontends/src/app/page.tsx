@@ -54,7 +54,7 @@ export default function LoginPage() {
           <button className="bg-[#a4c263] border border-[#7d9b3d] text-white font-bold w-[28px] h-[28px] flex items-center justify-center rounded-[3px] cursor-pointer">✕</button>
         </div>
 
-        {/* Main Content (Now Full Width) */}
+        {/* Main Content */}
         <div className="flex-1 bg-[#eaffd0] p-[30px] flex flex-col rounded-[10px]">
           <h2 className="text-[26px] text-black font-semibold mb-[25px] text-center">Welcome to TypingMaster</h2>
           

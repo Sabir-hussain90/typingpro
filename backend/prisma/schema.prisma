@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  password      String
+  isVerified    Boolean        @default(false)
+  otpCode       String?
+  otpExpiresAt  DateTime?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  results       TypingResult[]
+}
+
+model Paragraph {
+  id        String         @id @default(cuid())
+  title     String         
+  content   String         
+  createdAt DateTime       @default(now())
+  results   TypingResult[]
+}
+
+model TypingResult {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  paragraphId     String
+  paragraph       Paragraph @relation(fields: [paragraphId], references: [id])
+  
+  timeUsed        Int       
+  wpm             Float     
+  accuracy        Float     
+  netWpm          Float     
+  errors          Int       
+  
+  passed          Boolean   
+  isInterrupted   Boolean   @default(false) 
+  
+  createdAt       DateTime  @default(now())
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 30px; border-radius: 10px; border-top: 5px solid #6b4c9a; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    h2 { color: #4a6a1f; margin-top: 0; }
+    .otp { font-size: 36px; font-weight: bold; color: #6b4c9a; letter-spacing: 5px; text-align: center; padding: 15px; background: #eaffd0; border-radius: 5px; margin: 20px 0; border: 1px dashed #6b4c9a; }
+    p { color: #333; line-height: 1.6; font-size: 16px; }
+    .footer { font-size: 12px; color: #888; text-align: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to TypingMaster!</h2>
+    <p>Thank you for signing up. To complete your registration, please enter the following OTP (One-Time Password) on the activation page:</p>
+    <div class="otp">{{otp}}</div>
+    <p>This code is valid for <strong>15 minutes</strong>. If you didn't request this, please ignore this email.</p>
+    <div class="footer">
+      &copy; 2026 TypingMaster Pro. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
